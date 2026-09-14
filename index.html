@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講座イラストアーカイブ</title>
+    <style>
+        /* 基本設定 */
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc; /* 目に優しいオフホワイト */
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #ffffff;
+            padding: 20px 5%;
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #1e293b;
+            letter-spacing: 1px;
+        }
+    /* --- フッター --- */
+    footer {
+      background-color: #f9f9f9;
+      padding: 40px 0;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      color: #666;
+      text-decoration: none;
+    }
+
+        /* メインコンテンツ */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* カードレイアウト */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card-title {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-color: #fff;
+        }
+
+        /* 看護講座セクション（別扱い） */
+        .nursing-section {
+            margin-top: 60px;
+            padding: 40px 20px;
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .nursing-link {
+            display: inline-block;
+            color: #475569;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border: 1px solid #cbd5e1;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .nursing-link:hover {
+            background-color: #64748b;
+            color: white;
+        }
+
+        .nursing-link strong {
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-left: 10px;
+        }
+        .nursing-link:hover strong { color: white; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>NLC講座イラストアーカイブ</h1>
+</header>
+
+<div class="container">
+    <div class="intro">
+        <p>各講座で作成したイラストまとめ</p>
+    </div>
+
+    <div class="grid">
+        <a href="ds.html" class="card">
+            <img src="th01.webp" alt="DS講座">
+            <div class="card-title">DS講座</div>
+        </a>
+
+        <a href="aids.html" class="card">
+            <img src="th04.webp" alt="データサイエンス・AIリテラシー講座">
+            <div class="card-title">データサイエンス・AIリテラシー講座</div>
+        </a>
+
+       <a href="japanese.html" class="card">
+            <img src="th03.webp" alt="日本語表現力基礎講座">
+            <div class="card-title">日本語表現力基礎講座</div>
+        </a>
+
+        <a href="itbasic.html" class="card">
+            <img src="th02.webp" alt="情報基礎講座">
+            <div class="card-title">情報基礎講座</div>
+        </a>
+
+    </div>
+
+    <div class="nursing-section">
+        <a href="kango.html" class="nursing-link">
+            <strong>看護講座イラスト</strong>
+            </a>
+            
+            <a href="charapage.html" class="nursing-link">
+                <strong>キャラクター紹介</strong>
+            </a>
+    </div>
+ </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="company.html">運営会社</a>
+    </div>
+    <p>© 2026 AI/DS Lecture Project All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DS講座 イラスト紹介</title>
+  <style>
+    /* --- スタイルは変更なし（そのまま） --- */
+    body { font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; margin: 0; padding: 0; color: #333; background-color: #fff; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    header { background-color: #fff; border-bottom: 1px solid #eee; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+    nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; padding: 0 20px; }
+    #menu-toggle { display: none; }
+    .menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; cursor: pointer; z-index: 1100; margin-right: 20px; }
+    .menu-btn span { display: block; height: 3px; width: 100%; background-color: #000; border-radius: 2px; transition: all 0.3s; }
+    .nav-content { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid #eee; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .nav-content ul { list-style: none; margin: 0; padding: 20px; }
+    .nav-content ul li { margin-bottom: 15px; }
+    .nav-content ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 15px; display: block; }
+    #menu-toggle:checked ~ .nav-content { max-height: 300px; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+    h1 { font-size: 18px; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 50px; align-items: end; }
+    .gallery-item { display: block; transition: transform 0.2s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+    .modal:target { opacity: 1; visibility: visible; }
+    .modal-content { background-color: #fff; padding: 20px; max-width: 80%; max-height: 90%; border-radius: 8px; position: relative; text-align: center; }
+    .modal-content img { max-width: 100%; max-height: 70vh; height: auto; display: block; margin: 0 auto 15px; }
+    .modal-desc { font-size: 14px; color: #444; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
+    .close-btn { position: absolute; top: -40px; right: 0; color: #fff; text-decoration: none; font-size: 30px; font-weight: bold; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: default; }
+
+    .back-to-top { text-align: center; margin: 40px 0; }
+    .back-to-top a { text-decoration: none; color: #000; font-size: 12px; border: 1px solid #000; padding: 10px 20px; border-radius: 20px; }
+    footer { background-color: #f9f9f9; padding: 40px 0; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; }
+    .footer-links { margin-bottom: 20px; }
+    .footer-links a { margin: 0 10px; color: #666; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn"><span></span><span></span><span></span></label>
+    <div style="font-weight: bold; font-size: 18px;">DS講座 イラスト</div>
+    <div class="nav-content">
+      <ul>
+        <li><a href="ds.html">DS講座</a></li>
+        <li><a href="aids.html">データサイエンス・AIリテラシー講座</a></li>
+        <li><a href="japanese.html">日本語表現力基礎講座</a></li>
+        <li><a href="itbasic.html">情報基礎講座</a></li>
+        <hr style="margin: 10px 0; border-top: 1px solid #eee;">
+        <li><a href="index.html" style="font-size: 13px; color: #888;">トップページへ戻る</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>DS講座：シーン別イラスト一覧</h1>
+
+  <div class="gallery-grid">
+    <a href="#modal01" class="gallery-item"><img src="ds0101.webp" alt="シーン1"></a>
+    <a href="#modal02" class="gallery-item"><img src="ds0102.webp" alt="シーン2"></a>
+    <a href="#modal03" class="gallery-item"><img src="ds0301.webp" alt="シーン3"></a>
+    <a href="#modal04" class="gallery-item"><img src="ds0302.webp" alt="シーン4"></a>
+    <a href="#modal05" class="gallery-item"><img src="ds0401.webp" alt="シーン5"></a>
+    <a href="#modal06" class="gallery-item"><img src="ds0501.webp" alt="シーン6"></a>
+    <a href="#modal07" class="gallery-item"><img src="ds0502.webp" alt="シーン7"></a>
+    <a href="#modal08" class="gallery-item"><img src="ds0701.webp" alt="シーン8"></a>
+    <a href="#modal09" class="gallery-item"><img src="ds0801.webp" alt="シーン9"></a>
+    <a href="#modal10" class="gallery-item"><img src="ds0802.webp" alt="シーン10"></a>
+    <a href="#modal11" class="gallery-item"><img src="ds0803.webp" alt="シーン11"></a>
+    <a href="#modal12" class="gallery-item"><img src="ds0901.webp" alt="シーン12"></a>
+    <a href="#modal13" class="gallery-item"><img src="ds1201.webp" alt="シーン13"></a>
+    <a href="#modal14" class="gallery-item"><img src="ds1202.webp" alt="シーン14"></a>
+    <a href="#modal15" class="gallery-item"><img src="ds1301.webp" alt="シーン15"></a>
+    <a href="#modal16" class="gallery-item"><img src="ds1302.webp" alt="シーン16"></a>
+    <a href="#modal17" class="gallery-item"><img src="ds1303.webp" alt="シーン17"></a>
+    <a href="#modal18" class="gallery-item"><img src="ds1304.webp" alt="シーン18"></a>
+    <a href="#modal19" class="gallery-item"><img src="ds1401.webp" alt="シーン19"></a>
+    </div>
+
+  <div id="modal01" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0101.webp" alt="拡大1">
+      <div class="modal-desc">1章で使用。4人でディスカッションしているシーン。先生は理解の遅いサトウに丁寧に教えている。</div>
+    </div>
+  </div>
+
+  <div id="modal02" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0102.webp" alt="拡大2">
+      <div class="modal-desc">1章で使用。タピオカを飲む学生3人</div>
+    </div>
+  </div>
+
+  <div id="modal03" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0301.webp" alt="拡大3">
+      <div class="modal-desc">3章で使用。たまごを調査するサトウとフォン。</div>
+    </div>
+  </div>
+
+  <div id="modal04" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0302.webp" alt="拡大4">
+      <div class="modal-desc">3章で使用。古いイギリス風の庭園でティーパーティーをする4人。</div>
+    </div>
+  </div>
+
+  <div id="modal05" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0401.webp" alt="拡大5">
+      <div class="modal-desc">4章で使用。選挙特番をじっくりと視聴する先生と生徒。</div>
+    </div>
+  </div>
+
+  <div id="modal06" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0501.webp" alt="拡大6">
+      <div class="modal-desc">5章で使用。陸上競技場で走るサトウとスズキ。すでにゴールして1番の旗を持つフォン。</div>
+    </div>
+  </div>
+
+  <div id="modal07" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0502.webp" alt="拡大7">
+      <div class="modal-desc">5章で使用。目玉焼き、スクランブルエッグ、ゆで卵の3種類の卵料理を作る3人とどれにするか迷うスズキ。</div>
+    </div>
+  </div>
+
+  <div id="modal08" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0701.webp" alt="拡大8">
+      <div class="modal-desc">7章で使用。経済番組の株価変動のキャスターを務めるスズキ。</div>
+    </div>
+  </div>
+
+  <div id="modal09" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0801.webp" alt="拡大9">
+      <div class="modal-desc">8章で使用。いびつな形のサイコロを振るフォンとスズキ。</div>
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0802.webp" alt="拡大10">
+      <div class="modal-desc">8章で使用。たくさんの荷物を抱えた先生。</div>
+    </div>
+  </div>
+
+  <div id="modal11" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0803.webp" alt="拡大11">
+      <div class="modal-desc">8章で使用。PCを使って調査するスズキとそれを指導する先生。</div>
+    </div>
+  </div>
+
+  <div id="modal12" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL0901.webp" alt="拡大12">
+      <div class="modal-desc">9章で使用。研究の発表をグラフを使って行う先生。</div>
+    </div>
+  </div>
+
+  <div id="modal13" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1201.webp" alt="拡大13">
+      <div class="modal-desc">12章で使用。暑い季節に大学でアイスを食べる学生3人。</div>
+    </div>
+  </div>
+
+  <div id="modal14" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1202.webp" alt="拡大14">
+      <div class="modal-desc">12章で使用。様々な気象データを見ているアイス屋さんの店長の先生。</div>
+    </div>
+  </div>
+
+  <div id="modal15" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1301.webp" alt="拡大15">
+      <div class="modal-desc">13章で使用。犬なのか？猫なのか？どちらか困っているフォン君。</div>
+    </div>
+  </div>
+
+  <div id="modal16" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1302.webp" alt="拡大16">
+      <div class="modal-desc">13章で使用。様々なツールで調べ物をする学生に説明をする先生。</div>
+    </div>
+  </div>
+
+  <div id="modal17" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1303.webp" alt="拡大17">
+      <div class="modal-desc">13章で使用。たまごを囲んで結果を予想しあう学生3人。</div>
+    </div>
+  </div>
+
+  <div id="modal18" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1304.webp" alt="拡大18">
+      <div class="modal-desc">13章で使用。研究の発表を表を使って行う先生。</div>
+    </div>
+  </div>
+
+  <div id="modal19" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="dsL1401.webp" alt="拡大19">
+      <div class="modal-desc">使用章未定。宝くじ番号抽選会の様子。</div>
+    </div>
+  </div>
+
+
+  <div class="back-to-top">
+    <a href="#">↑ ページの一番上に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="company.html">運営会社</a>
+  </div>
+  <p>© 2026 AI/DS Lecture Project All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

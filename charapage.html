@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>各講座に登場するキャラクターの紹介</title>
+  <style>
+    /* 全体設定 */
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 0; /* ヘッダー・フッターのために0に */
+      padding: 0;
+      color: #333;
+      background-color: #fff;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* --- ヘッダー・ナビゲーション --- */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #666;
+      font-size: 13px;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    /* --- コンテンツスタイル --- */
+    h1 {
+      font-size: 14px;
+      font-weight: normal;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    details { margin-bottom: 10px; }
+
+    summary {
+      display: block;
+      cursor: pointer;
+      padding: 8px 24px;
+      background-color: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      width: fit-content;
+      min-width: 280px;
+      outline: none;
+      list-style: none;
+    }
+
+    summary:hover { background-color: #333; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: ' ▼'; font-size: 10px; margin-left: 10px; }
+    details[open] summary::after { content: ' ▲'; }
+
+    .content-wrapper {
+      padding: 10px 0 0 0;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .character-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+      align-items: flex-end; /* 画像の足を揃える */
+    }
+
+    .character {
+      width: 220px;
+      text-align: center;
+      margin-bottom: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .character img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: auto auto 0 auto; /* 画像を枠の下へ */
+    }
+
+    .character-name {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .character-desc {
+      margin-top: 8px;
+      font-size: 12px;
+      text-align: left;
+      display: inline-block;
+      color: #444;
+      width: 90%;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 0px 0 10px 0;
+    }
+
+    /* --- トップへ戻るボタン --- */
+    .back-to-top {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-to-top a {
+      text-decoration: none;
+      color: #000;
+      font-size: 12px;
+      border: 1px solid #000;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .back-to-top a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* --- フッター --- */
+    footer {
+      background-color: #f9f9f9;
+      padding: 40px 0;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      color: #666;
+      text-decoration: none;
+    }
+/* --- スタイルシートに追加 --- */
+
+/* ハンバーガーメニューの隠しチェックボックス */
+#menu-toggle {
+  display: none;
+}
+
+/* 三本線ボタンの見た目 */
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1100;
+  margin-right: 20px;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #000;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* メニューの内容（折りたたみ部分） */
+.nav-content {
+  position: absolute;
+  top: 100%; /* ヘッダーのすぐ下 */
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  max-height: 0; /* 最初は高さを0にする */
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.nav-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+.nav-content ul li {
+  margin-bottom: 15px;
+}
+
+.nav-content ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 15px;
+  display: block;
+}
+
+/* チェックが入った（ボタンが押された）時の動き */
+#menu-toggle:checked ~ .nav-content {
+  max-height: 300px; /* メニューが開く */
+}
+
+/* 三本線を「×」に変える演出（お好みで） */
+#menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+#menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+#menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+  </style>
+
+</head>
+<body>
+
+  <header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    
+    <label for="menu-toggle" class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <div style="font-weight: bold; font-size: 18px;">キャラクター紹介</div>
+
+    <div class="nav-content">
+      <ul>
+        <li><a href="ds.html">DS講座</a></li>
+        <li><a href="aids.html">データサイエンス・AIリテラシー講座</a></li>
+        <li><a href="japanese.html">日本語表現力基礎講座</a></li>
+        <li><a href="itbasic.html">情報基礎講座</a></li>
+        <hr style="margin: 10px 0; border-top: 1px solid #eee;">
+        <li><a href="index.html" style="font-size: 13px; color: #888;">トップページへ戻る</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+  <div class="container">
+    <h1>各講座に登場するキャラクターの紹介</h1>
+
+  <details open>
+    <summary>DS講座</summary>
+    <div class="content-wrapper">
+      <div class="character-container">
+        <div class="character">
+          <img src="chDS01.webp" alt="Lisa Watanabe">
+          <div class="character-name">先生<br>Lisa Watanabe<br>(リサ ワタナベ)</div>
+          <div class="character-desc">・女性<br>・日本人と外国人のハーフ<br>・メガネを外す時もある<br>・講座での呼び名は「先生」</div>
+        </div>
+        <div class="character">
+          <img src="chDS02.webp" alt="スズキ アオ">
+          <div class="character-name">生徒A<br>鈴木碧<br>(スズキアオ)</div>
+          <div class="character-desc">・性別不明(実は女性)<br>・国籍不明<br>・優秀<br>・講座での呼び名は「スズキ」</div>
+        </div>
+        <div class="character">
+          <img src="chDS03.webp" alt="Nguyen Tan Phong">
+          <div class="character-name">生徒B<br>Nguyen Tan Phong<br>(グエン・タン・フォン)</div>
+        <div class="character-desc">・男性<br>・ベトナム人<br>・普通<br>・講座での呼び名は「フォン」</div>
+        </div>
+        <div class="character">
+          <img src="chDS04.webp" alt="佐藤 拓也">
+          <div class="character-name">生徒C<br>佐藤拓也<br>(サトウタクヤ)</div>
+       <div class="character-desc">・男性<br>・日本人<br>・ややバカ<br>・講座での呼び名は「サトウ」</div>
+        </div>
+    </div>
+  </details>
+
+  <hr>
+
+  <details>
+    <summary>データサイエンス・AIリテラシー講座</summary>
+    <div class="content-wrapper">
+      <div class="character-container">
+        <div class="character"><img src="chAD01.webp" alt="カイちゃん"><div class="character-name">カイ7号</div>
+          <div class="character-desc">・データサイエンス・AIリテラシー講座のナビゲーター<br>・ヒト型ロボット、性別不明<br>・感情的にならない</div>
+        </div>
+        <div class="character"><img src="chAD02.webp" alt="Aさん"><div class="character-name">Aさん</div>
+        <div class="character-desc">・講座の中で出番が一番多い<br>・男女どちらにも見える中性的な設定</div>
+        </div>
+        <div class="character"><img src="chAD03.webp" alt="ヤス"><div class="character-name">ヤス</div>
+        <div class="character-desc">・ギャンブル好きのダメ人間<br>・運動が嫌いでスナック菓子がやめられない</div>
+        </div>
+<div class="character"><img src="chAD04.webp" alt="悪者"><div class="character-name">悪者</div>
+        <div class="character-desc">・日本語表現力基礎講座からの持ち越しキャラ<br>・猫背が特徴</div>
+        </div>
+      </div>
+      <div class="character-container">
+        <div class="character"><img src="chAD05.webp" alt="警官"><div class="character-name">警官</div>
+<div class="character-desc">・バディでの行動が多い<br>・モデルはお笑いコンビのEXIT</div></div>
+        <div class="character"><img src="chAD06.webp" alt="偉人"><div class="character-name">偉人</div>
+<div class="character-desc">・ロナルド・フィッシャー<br>・ジョン・ネイピア</div></div>
+        <div class="character" style="width: 440px;"><img src="chAD07.webp" alt="その他の登場人物"><div class="character-name">その他の登場人物</div>
+<div class="character-desc">・アパートの大家さんとその住人、たまご農家のおじさんなど</div></div>
+    </div>
+  </details>
+
+  <hr>
+
+  <details>
+    <summary>日本語表現力基礎講座</summary>
+    <div class="content-wrapper">
+      <div class="character-container">
+       <div class="character-container">
+        <div class="character"><img src="chN01.webp" alt="マナ"><div class="character-name">マナ</div>
+<div class="character-desc">・大学3年生<br>・几帳面でしっかり者の長女</div></div>
+         <div class="character"><img src="chN02.webp" alt="ダイキ"><div class="character-name">ダイキ</div>
+<div class="character-desc">・マナとは高校の同級生<br>・向上心が強く時間に正確</div></div>
+        <div class="character"><img src="chN03.webp" alt="マサオ"><div class="character-name">マサオ</div>
+<div class="character-desc">・・好奇心旺盛で社交的<br>・うっかりミスが多いお調子者</div></div>
+        <div class="character"><img src="chN04.webp" alt="ミサキ"><div class="character-name">ミサキ</div>
+<div class="character-desc">・帰国子女みんなより年上<br>・フレンドリーで大胆な正確</div></div>
+      </div>
+      <div class="character-container">
+         <div class="character"><img src="chN05.webp" alt="成田先生"><div class="character-name">成田先生</div>
+<div class="character-desc">・日本語表現力基礎講座の先生<br>・分かりやすい解説で若者に人気</div></div>
+        <div class="character" style="width: 520px;"> <img src="chN06.webp" alt="スマッピー">
+          <div class="character-name">スマッピー</div>
+<div class="character-desc">・日本語表現力基礎講座のナビゲーター。大抵の事は説明できる。<br>表情豊かだが、動きが単調</div></div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <hr>
+
+  <details>
+    <summary>情報基礎講座</summary>
+  <h1>日本語表現力基礎講座からの持ち越しキャラクターが多い</h1>
+    <div class="content-wrapper">
+      <div class="character-container">
+        <div class="character"><img src="chJ01.webp" alt="アナウンサー"><div class="character-name">アナウンサー</div>
+          <div class="character-desc">・交通情報、株価情報などに登場</div>
+        </div>
+        <div class="character"><img src="chJ02.webp" alt="偉人"><div class="character-name">偉人</div>
+        <div class="character-desc">・グラフを持つナイチンゲール</div>
+        </div>
+<div class="character" style="width: 440px;"><img src="chJ03.webp" alt="その他の登場人物"><div class="character-name">その他の登場人物</div>
+        <div class="character-desc">・億万長者と農民、職人などの市民</div>
+        </div>
+      </div>
+
+  </details>
+    <hr>
+
+    <div class="back-to-top">
+      <a href="#">↑ ページの一番上に戻る</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="company.html">運営会社</a>
+    </div>
+    <p>© 2026 AI/DS Lecture Project All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

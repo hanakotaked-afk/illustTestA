@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>看護講座 イラスト紹介</title>
+  <style>
+    /* --- 基本スタイル --- */
+    html {
+      scroll-behavior: smooth; /* 追加：スクロールを滑らかにする */
+    }
+    body { 
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; 
+      margin: 0; padding: 0; 
+      color: #333; 
+      background-color: #f5f5f5; 
+      line-height: 1.6; 
+    }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    
+    /* ヘッダー */
+    header { background-color: #fff; border-bottom: 1px solid #ddd; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+    nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; padding: 0 20px; }
+    #menu-toggle { display: none; }
+    .menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; cursor: pointer; z-index: 1100; margin-right: 20px; }
+    .menu-btn span { display: block; height: 3px; width: 100%; background-color: #333; border-radius: 2px; transition: all 0.3s; }
+    .nav-content { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid #ddd; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .nav-content ul { list-style: none; margin: 0; padding: 20px; }
+    .nav-content ul li { margin-bottom: 15px; }
+    .nav-content ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 15px; display: block; }
+    #menu-toggle:checked ~ .nav-content { max-height: 350px; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+    /* タイトル（控えめデザイン） */
+    .section-title { font-size: 17px; font-weight: normal; color: #555; margin-bottom: 25px; display: flex; align-items: center; cursor: pointer; }
+    .section-title::before { content: "●"; font-size: 12px; margin-right: 10px; color: #999; }
+
+    /* アコーディオン */
+    details { margin-bottom: 30px; }
+    summary { list-style: none; outline: none; }
+    summary::-webkit-details-marker { display: none; }
+
+    /* --- グリッドレイアウト --- */
+    .nursing-grid { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 15px; 
+    }
+
+    @media (max-width: 768px) {
+      .nursing-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .section-title { font-size: 15px; }
+    }
+
+    /* ホバーカード */
+    .nursing-item { 
+      position: relative; 
+      overflow: hidden; 
+      border: 1px solid #ddd; 
+      aspect-ratio: 10 / 7; 
+      background-color: #fff; 
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .nursing-item img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.6s ease; 
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.75); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      box-sizing: border-box;
+      opacity: 0; 
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .overlay-text {
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .nursing-item:hover .overlay { opacity: 1; }
+    .nursing-item:hover img { transform: scale(1.1); }
+
+    /* --- モーダル（拡大画面） --- */
+    #image-modal {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #image-modal.active { display: flex; opacity: 1; }
+    #modal-img {
+      max-width: 95%;
+      max-height: 85%;
+      object-fit: contain;
+      border: 2px solid #fff;
+    }
+    #modal-caption {
+      position: absolute;
+      bottom: 3%;
+      color: #fff;
+      font-size: 15px;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 20px;
+      border-radius: 30px;
+      letter-spacing: 0.05em;
+    }
+
+    /* 追加：ページトップへ戻るボタンのスタイル */
+    .back-to-top { text-align: center; margin: 40px 0; }
+    .back-to-top a { text-decoration: none; color: #333; font-size: 12px; border: 1px solid #ccc; padding: 10px 20px; border-radius: 20px; background-color: #fff; transition: background-color 0.2s; }
+    .back-to-top a:hover { background-color: #eee; }
+
+    footer { background-color: #e0e0e0; padding: 40px 0; border-top: 1px solid #ccc; text-align: center; font-size: 12px; color: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn"><span></span><span></span><span></span></label>
+    <div style="font-weight: bold; font-size: 18px; letter-spacing: 0.05em;">看護講座 イラスト紹介</div>
+    <div class="nav-content">
+      <ul>
+        <li><a href="ds.html">DS講座</a></li>
+        <li><a href="aids.html">データサイエンス・AIリテラシー講座</a></li>
+        <li><a href="japanese.html">日本語表現力基礎講座</a></li>
+        <li><a href="itbasic.html">情報基礎講座</a></li>
+        <li><a href="#page-bottom">↓ ページの一番下へ移動</a></li>
+        <hr style="margin: 10px 0; border-top: 1px solid #eee;">
+        <li><a href="index.html" style="font-size: 13px; color: #888;">トップページへ戻る</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  
+  <details open>
+    <summary>
+      <h2 class="section-title">看護講座イラスト紹介ページ</h2>
+    </summary>
+
+    <div class="nursing-grid">
+      <div class="nursing-item" onclick="openModal('kango01.webp', '腰椎穿刺を行う際の体位の解説。Aが正解')">
+<img src="thumb_kango01.webp" alt="01" loading="lazy"><div class="overlay">
+<div class="overlay-text">腰椎穿刺を行う際の体位</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango02.webp', '包帯法の解説で使用する包帯の巻き方の図')">
+<img src="thumb_kango02.webp" alt="02" loading="lazy"><div class="overlay">
+<div class="overlay-text">包帯法</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango03.webp', '胸腔ドレナージの管理の解説で使用する水封ドレーンの模型')">
+<img src="thumb_kango03.webp" alt="03" loading="lazy"><div class="overlay">
+<div class="overlay-text">水封ドレーンの模型</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango04.webp', '気管内吸引を行う時のカテーテルの操作の解説。②が正解')">
+<img src="thumb_kango04.webp" alt="04" loading="lazy"><div class="overlay">
+<div class="overlay-text">気管内吸引</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango05.webp', 'スタンダードプリコーションの解説で使用する手洗い時の確認の図')">
+<img src="thumb_kango05.webp" alt="05" loading="lazy"><div class="overlay">
+<div class="overlay-text">スタンダードプリコーション</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango06.webp', '虚血性心疾患の解説')">
+<img src="thumb_kango06.webp" alt="06" loading="lazy"><div class="overlay">
+<div class="overlay-text">虚血性心疾患</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango07.webp', 'リンパ系幹細胞から分化する解説図')">
+<img src="thumb_kango07.webp" alt="07" loading="lazy"><div class="overlay">
+<div class="overlay-text">リンパ系幹細胞</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango08.webp', '血液凝固に関与する血液凝固因子の解説図')">
+<img src="thumb_kango08.webp" alt="08" loading="lazy"><div class="overlay">
+<div class="overlay-text">血液凝固</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango09.webp', '骨格筋の微細構造の図')">
+<img src="thumb_kango09.webp" alt="09" loading="lazy"><div class="overlay">
+<div class="overlay-text">骨格筋</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango10.webp', '表在感覚、痛覚・触覚・圧覚の解説図')">
+<img src="thumb_kango10.webp" alt="10" loading="lazy"><div class="overlay">
+<div class="overlay-text">表在感覚</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango11.webp', '門脈の末梢枝の解説図')">
+<img src="thumb_kango11.webp" alt="11" loading="lazy"><div class="overlay">
+<div class="overlay-text">門脈の末梢枝</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango12.webp', '手術体位での固定の図。図の中に間違いがあり、それを答える')">
+<img src="thumb_kango12.webp" alt="12" loading="lazy"><div class="overlay">
+<div class="overlay-text">手術体位とその影響</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango13.webp', '胎児心音の聴取部位の図、最も適切な聴取部位を答える')">
+<img src="thumb_kango13.webp" alt="13" loading="lazy"><div class="overlay">
+<div class="overlay-text">胎位胎向</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango14.webp', 'レオポルド触診法の図')">
+<img src="thumb_kango14.webp" alt="14" loading="lazy"><div class="overlay">
+<div class="overlay-text">レオポルド触診法</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango15.webp', '母性看護学追加')">
+<img src="thumb_kango15.webp" alt="15" loading="lazy"><div class="overlay">
+<div class="overlay-text">母性看護学追加</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango16.webp', 'スワン-ガンツカテーテルの図')">
+<img src="thumb_kango16.webp" alt="16" loading="lazy"><div class="overlay">
+<div class="overlay-text">スワン-ガンツカテーテル</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango17.webp', '人工呼吸器の回路の途中に水滴を集める装置をウォータートラップという')">
+<img src="thumb_kango17.webp" alt="17" loading="lazy"><div class="overlay">
+<div class="overlay-text">ウォータートラップ</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango18.webp', '肺胞壁の変性により肺が過度に進展し，収縮しなくなる疾患である慢性肺気腫の図')">
+<img src="thumb_kango18.webp" alt="18" loading="lazy"><div class="overlay">
+<div class="overlay-text">慢性肺気腫</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango19.webp', '褥瘡の深さの分類。ステージⅠからステージⅣ')">
+<img src="thumb_kango19.webp" alt="19" loading="lazy"><div class="overlay">
+<div class="overlay-text">褥瘡分類方法</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango20.webp', '点滴施注時の援助方法')">
+<img src="thumb_kango20.webp" alt="20" loading="lazy"><div class="overlay">
+<div class="overlay-text">小児の処置に対する援助</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango22.webp', 'ポルトバックをポシェットに入れて携帯している図')">
+<img src="thumb_kango22.webp" alt="22" loading="lazy"><div class="overlay">
+<div class="overlay-text">ポルトバックの携帯</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango23.webp', '乳房の型に合った授乳方法')">
+<img src="thumb_kango23.webp" alt="23" loading="lazy"><div class="overlay">
+<div class="overlay-text">母乳育児</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango24.webp', '乳房の形')">
+<img src="thumb_kango24.webp" alt="24" loading="lazy"><div class="overlay">
+<div class="overlay-text">乳房のタイプ</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango25.webp', 'ラクナ梗塞の図')">
+<img src="thumb_kango25.webp" alt="25" loading="lazy"><div class="overlay">
+<div class="overlay-text">ラクナ梗塞</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango26.webp', '前立腺がんの手術')">
+<img src="thumb_kango26.webp" alt="26" loading="lazy"><div class="overlay">
+<div class="overlay-text">前立腺がんの手術</div></div></div>
+      <div class="nursing-item" onclick="openModal('kango27.webp', '白内障による水晶体が混濁する図')">
+<img src="thumb_kango27.webp" alt="27" loading="lazy"><div class="overlay">
+<div class="overlay-text">白内障</div></div></div>
+
+    </div>
+  </details>
+
+  <div class="back-to-top">
+    <a href="#">↑ ページの一番上に戻る</a>
+  </div>
+
+</div>
+
+<div id="image-modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="拡大画像">
+  <div id="modal-caption"></div>
+</div>
+
+<footer id="page-bottom">
+  <div style="margin-bottom: 10px;">
+    <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">利用規約</a>
+    <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">プライバシーポリシー</a>
+  </div>
+  <div>&copy; 2026 看護講座 イラストギャラリー</div>
+</footer>
+
+<script>
+  function openModal(highResSrc, captionText) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    
+    // 拡大用画像をセット
+    modalImg.src = highResSrc;
+    modalCaption.innerText = captionText;
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('image-modal');
+    modal.classList.remove('active');
+    // 次回開く時に一瞬前の画像が見えないよう空にする
+    document.getElementById('modal-img').src = "";
+  }
+</script>
+
+</body>
+</html>

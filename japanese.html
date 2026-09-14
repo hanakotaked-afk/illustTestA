@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本語表現力基礎講座 イラスト紹介</title>
+  <style>
+    /* --- スタイルは変更なし（そのまま） --- */
+    body { font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; margin: 0; padding: 0; color: #333; background-color: #fff; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    header { background-color: #fff; border-bottom: 1px solid #eee; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+    nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; padding: 0 20px; }
+    #menu-toggle { display: none; }
+    .menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; cursor: pointer; z-index: 1100; margin-right: 20px; }
+    .menu-btn span { display: block; height: 3px; width: 100%; background-color: #000; border-radius: 2px; transition: all 0.3s; }
+    .nav-content { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid #eee; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .nav-content ul { list-style: none; margin: 0; padding: 20px; }
+    .nav-content ul li { margin-bottom: 15px; }
+    .nav-content ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 15px; display: block; }
+    #menu-toggle:checked ~ .nav-content { max-height: 300px; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+    h1 { font-size: 18px; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 50px; align-items: end; }
+    .gallery-item { display: block; transition: transform 0.2s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+    .modal:target { opacity: 1; visibility: visible; }
+    .modal-content { background-color: #fff; padding: 20px; max-width: 80%; max-height: 90%; border-radius: 8px; position: relative; text-align: center; }
+    .modal-content img { max-width: 100%; max-height: 70vh; height: auto; display: block; margin: 0 auto 15px; }
+    .modal-desc { font-size: 14px; color: #444; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
+    .close-btn { position: absolute; top: -40px; right: 0; color: #fff; text-decoration: none; font-size: 30px; font-weight: bold; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: default; }
+
+    .back-to-top { text-align: center; margin: 40px 0; }
+    .back-to-top a { text-decoration: none; color: #000; font-size: 12px; border: 1px solid #000; padding: 10px 20px; border-radius: 20px; }
+    footer { background-color: #f9f9f9; padding: 40px 0; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; }
+    .footer-links { margin-bottom: 20px; }
+    .footer-links a { margin: 0 10px; color: #666; text-decoration: none; }
+/* --- 追加：アコーディオンのスタイル --- */
+    details {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none; /* デフォルトの矢印を消す（任意） */
+      outline: none;
+    }
+
+    /* タイトル横に擬似的に「＋」マークなどを付けるとおしゃれです */
+    summary h1 {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    
+    summary::-webkit-details-marker { display: none; } /* Safari用矢印消し */
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn"><span></span><span></span><span></span></label>
+    <div style="font-weight: bold; font-size: 18px;">日本語表現力基礎講座 イラスト</div>
+    <div class="nav-content">
+      <ul>
+        <li><a href="ds.html">DS講座</a></li>
+        <li><a href="aids.html">データサイエンス・AIリテラシー講座</a></li>
+        <li><a href="japanese.html">日本語表現力基礎講座</a></li>
+        <li><a href="itbasic.html">情報基礎講座</a></li>
+        <hr style="margin: 10px 0; border-top: 1px solid #eee;">
+        <li><a href="index.html" style="font-size: 13px; color: #888;">トップページへ戻る</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+
+  <details open>
+    <summary><h1>人物を含むシーン</h1></summary>
+    <div class="gallery-grid">
+
+    <a href="#modal01" class="gallery-item"><img src="jajin01.webp" alt="シーン1"></a>
+    <a href="#modal02" class="gallery-item"><img src="jajin02.webp" alt="シーン2"></a>
+    <a href="#modal03" class="gallery-item"><img src="jajin03.webp" alt="シーン3"></a>
+    <a href="#modal04" class="gallery-item"><img src="jajin04.webp" alt="シーン4"></a>
+    <a href="#modal05" class="gallery-item"><img src="jajin05.webp" alt="シーン5"></a>
+    <a href="#modal06" class="gallery-item"><img src="jajin06.webp" alt="シーン6"></a>
+    <a href="#modal07" class="gallery-item"><img src="jajin07.webp" alt="シーン7"></a>
+    <a href="#modal08" class="gallery-item"><img src="jajin08.webp" alt="シーン8"></a>
+    <a href="#modal09" class="gallery-item"><img src="jajin09.webp" alt="シーン9"></a>
+    <a href="#modal10" class="gallery-item"><img src="jajin10.webp" alt="シーン10"></a>
+    <a href="#modal11" class="gallery-item"><img src="jajin11.webp" alt="シーン11"></a>
+    <a href="#modal12" class="gallery-item"><img src="jajin12.webp" alt="シーン12"></a>
+    <a href="#modal13" class="gallery-item"><img src="jajin13.webp" alt="シーン13"></a>
+    <a href="#modal14" class="gallery-item"><img src="jajin14.webp" alt="シーン14"></a>
+    <a href="#modal15" class="gallery-item"><img src="jajin15.webp" alt="シーン15"></a>
+    <a href="#modal16" class="gallery-item"><img src="jajin16.webp" alt="シーン16"></a>
+    <a href="#modal17" class="gallery-item"><img src="jajin17.webp" alt="シーン17"></a>
+    <a href="#modal18" class="gallery-item"><img src="jajin18.webp" alt="シーン18"></a>
+    <a href="#modal19" class="gallery-item"><img src="jajin19.webp" alt="シーン19"></a>
+    <a href="#modal20" class="gallery-item"><img src="jajin20.webp" alt="シーン20"></a>
+    <a href="#modal21" class="gallery-item"><img src="jajin21.webp" alt="シーン21"></a>
+    <a href="#modal22" class="gallery-item"><img src="jajin22.webp" alt="シーン22"></a>
+    <a href="#modal23" class="gallery-item"><img src="jajin23.webp" alt="シーン23"></a>
+    <a href="#modal24" class="gallery-item"><img src="jajin24.webp" alt="シーン24"></a>
+    <a href="#modal25" class="gallery-item"><img src="jajin25.webp" alt="シーン25"></a>
+    <a href="#modal26" class="gallery-item"><img src="jajin26.webp" alt="シーン26"></a>
+    <a href="#modal27" class="gallery-item"><img src="jajin27.webp" alt="シーン27"></a>
+    <a href="#modal28" class="gallery-item"><img src="jajin28.webp" alt="シーン28"></a>
+    <a href="#modal29" class="gallery-item"><img src="jajin29.webp" alt="シーン29"></a>
+    <a href="#modal30" class="gallery-item"><img src="jajin30.webp" alt="シーン30"></a>
+    <a href="#modal31" class="gallery-item"><img src="jajin31.webp" alt="シーン31"></a>
+    <a href="#modal32" class="gallery-item"><img src="jajin32.webp" alt="シーン32"></a>
+    <a href="#modal33" class="gallery-item"><img src="jajin33.webp" alt="シーン33"></a>
+    </div>
+
+  <div id="modal01" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL01.webp" alt="拡大1">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal02" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL02.webp" alt="拡大2">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal03" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL03.webp" alt="拡大3">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal04" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL04.webp" alt="拡大4">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal05" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL05.webp" alt="拡大5">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal06" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL06.webp" alt="拡大6">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal07" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL07.webp" alt="拡大7">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal08" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL08.webp" alt="拡大8">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal09" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL09.webp" alt="拡大9">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL10.webp" alt="拡大10">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal11" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL11.webp" alt="拡大11">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal12" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL12.webp" alt="拡大12">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal13" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL13.webp" alt="拡大13">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal14" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL14.webp" alt="拡大14">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal15" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL15.webp" alt="拡大15">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal16" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL16.webp" alt="拡大16">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal17" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL17.webp" alt="拡大17">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal18" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL18.webp" alt="拡大18">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal19" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL19.webp" alt="拡大19">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal20" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL20.webp" alt="拡大20">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal21" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL21.webp" alt="拡大21">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal22" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL22.webp" alt="拡大22">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal23" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL23.webp" alt="拡大23">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal24" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL24.webp" alt="拡大24">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal25" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL25.webp" alt="拡大25">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal26" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL25.webp" alt="拡大26">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal27" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL27.webp" alt="拡大27">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal28" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL28.webp" alt="拡大28">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal29" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL29.webp" alt="拡大29">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal30" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL30.webp" alt="拡大30">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal31" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL31.webp" alt="拡大31">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal32" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL32.webp" alt="拡大32">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal33" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL33.webp" alt="拡大33">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+</details>
+
+  <details>
+    <summary><h1>機器・ネットワーク</h1></summary>
+    <div class="gallery-grid">
+    <a href="#modal34" class="gallery-item"><img src="jakiki34.webp" alt="シーン34"></a>
+    <a href="#modal35" class="gallery-item"><img src="jakiki35.webp" alt="シーン35"></a>
+    <a href="#modal36" class="gallery-item"><img src="jakiki36.webp" alt="シーン36"></a>
+    <a href="#modal37" class="gallery-item"><img src="jakiki37.webp" alt="シーン37"></a>
+    <a href="#modal38" class="gallery-item"><img src="jakiki38.webp" alt="シーン38"></a>
+    <a href="#modal39" class="gallery-item"><img src="jakiki39.webp" alt="シーン39"></a>
+    </div>
+
+  <div id="modal34" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL34.webp" alt="拡大34">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal35" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL35.webp" alt="拡大35">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal36" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL36.webp" alt="拡大36">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal37" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL37.webp" alt="拡大37">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal38" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL38.webp" alt="拡大38">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal39" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL39.webp" alt="拡大39">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+</details>
+
+<details>
+  <summary><h1>生活・日用</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal40" class="gallery-item"><img src="jalife40.webp" alt="シーン40"></a>
+    <a href="#modal41" class="gallery-item"><img src="jalife41.webp" alt="シーン41"></a>
+    <a href="#modal42" class="gallery-item"><img src="jalife42.webp" alt="シーン42"></a>
+    <a href="#modal43" class="gallery-item"><img src="jalife43.webp" alt="シーン43"></a>
+    <a href="#modal44" class="gallery-item"><img src="jalife44.webp" alt="シーン44"></a>
+    <a href="#modal45" class="gallery-item"><img src="jalife45.webp" alt="シーン45"></a>
+    <a href="#modal46" class="gallery-item"><img src="jalife46.webp" alt="シーン46"></a>
+    <a href="#modal65" class="gallery-item"><img src="jalife47.webp" alt="シーン65"></a>
+    </div>
+
+  <div id="modal40" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL40.webp" alt="拡大40">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal41" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL41.webp" alt="拡大41">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal42" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL42.webp" alt="拡大42">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal43" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL43.webp" alt="拡大43">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal44" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL44.webp" alt="拡大44">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal45" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL45.webp" alt="拡大45">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal46" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL46.webp" alt="拡大46">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal65" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="japopL47.webp" alt="拡大65">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+</details>
+
+<details>
+<summary><h1>グラフ・表・アイコン</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal47" class="gallery-item"><img src="jpG01.webp" alt="シーン47"></a>
+    <a href="#modal48" class="gallery-item"><img src="jpG02.webp" alt="シーン48"></a>
+    <a href="#modal49" class="gallery-item"><img src="jpG03.webp" alt="シーン49"></a>
+    <a href="#modal50" class="gallery-item"><img src="jpG04.webp" alt="シーン50"></a>
+    <a href="#modal51" class="gallery-item"><img src="jpG05.webp" alt="シーン51"></a>
+    <a href="#modal52" class="gallery-item"><img src="jpG06.webp" alt="シーン52"></a>
+    <a href="#modal53" class="gallery-item"><img src="jpG07.webp" alt="シーン53"></a>
+    <a href="#modal54" class="gallery-item"><img src="jpG08.webp" alt="シーン54"></a>
+    <a href="#modal55" class="gallery-item"><img src="jpG09.webp" alt="シーン55"></a>
+    <a href="#modal56" class="gallery-item"><img src="jpG10.webp" alt="シーン56"></a>
+    <a href="#modal57" class="gallery-item"><img src="jpG11.webp" alt="シーン57"></a>
+    <a href="#modal58" class="gallery-item"><img src="jpG12.webp" alt="シーン58"></a>
+    <a href="#modal59" class="gallery-item"><img src="jpG13.webp" alt="シーン59"></a>
+    <a href="#modal60" class="gallery-item"><img src="jpG14.webp" alt="シーン60"></a>
+    <a href="#modal61" class="gallery-item"><img src="jpG15.webp" alt="シーン61"></a>
+    <a href="#modal62" class="gallery-item"><img src="jpG16.webp" alt="シーン62"></a>
+    </div>
+
+  <div id="modal47" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL01.webp" alt="拡大47">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal48" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL02.webp" alt="拡大48">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal49" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL03.webp" alt="拡大49">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal50" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL04.webp" alt="拡大50">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal51" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL05.webp" alt="拡大51">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal52" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL06.webp" alt="拡大52">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal53" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL07.webp" alt="拡大53">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal54" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL08.webp" alt="拡大54">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal55" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL09.webp" alt="拡大55">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal56" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL10.webp" alt="拡大56">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal57" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL11" alt="拡大57">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal58" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL12.webp" alt="拡大58">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal59" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL13.webp" alt="拡大59">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal60" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL14.webp" alt="拡大60">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal61" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL15.webp" alt="拡大61">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal62" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpGL16.webp" alt="拡大62">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+</details>
+
+<details>
+  <summary><h1>風景</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal63" class="gallery-item"><img src="jpF01.webp" alt="シーン63"></a>
+    <a href="#modal64" class="gallery-item"><img src="jpF02.webp" alt="シーン64"></a>
+    </div>
+
+  <div id="modal63" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpFL01.webp" alt="拡大63">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+
+  <div id="modal64" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="jpFL02.webp" alt="拡大64">
+      <div class="modal-desc">日本語表現力基礎講座で使用</div>
+    </div>
+  </div>
+</details>
+
+
+  <div class="back-to-top">
+    <a href="#">↑ ページの一番上に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="company.html">運営会社</a>
+  </div>
+  <p>© 2026 AI/DS Lecture Project All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

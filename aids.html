@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>データサイエンス・AIリテラシー講座 イラスト</title>
+  <style>
+    /* --- スタイルは変更なし（そのまま） --- */
+    body { font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; margin: 0; padding: 0; color: #333; background-color: #fff; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    header { background-color: #fff; border-bottom: 1px solid #eee; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+    nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; padding: 0 20px; }
+    #menu-toggle { display: none; }
+    .menu-btn { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; cursor: pointer; z-index: 1100; margin-right: 20px; }
+    .menu-btn span { display: block; height: 3px; width: 100%; background-color: #000; border-radius: 2px; transition: all 0.3s; }
+    .nav-content { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; border-bottom: 1px solid #eee; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .nav-content ul { list-style: none; margin: 0; padding: 20px; }
+    .nav-content ul li { margin-bottom: 15px; }
+    .nav-content ul li a { text-decoration: none; color: #333; font-weight: bold; font-size: 15px; display: block; }
+    #menu-toggle:checked ~ .nav-content { max-height: 300px; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .menu-btn span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+    h1 { font-size: 18px; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 50px; align-items: end; }
+    .gallery-item { display: block; transition: transform 0.2s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+    .modal:target { opacity: 1; visibility: visible; }
+    .modal-content { background-color: #fff; padding: 20px; max-width: 80%; max-height: 90%; border-radius: 8px; position: relative; text-align: center; }
+    .modal-content img { max-width: 100%; max-height: 70vh; height: auto; display: block; margin: 0 auto 15px; }
+    .modal-desc { font-size: 14px; color: #444; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
+    .close-btn { position: absolute; top: -40px; right: 0; color: #fff; text-decoration: none; font-size: 30px; font-weight: bold; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: default; }
+
+    .back-to-top { text-align: center; margin: 40px 0; }
+    .back-to-top a { text-decoration: none; color: #000; font-size: 12px; border: 1px solid #000; padding: 10px 20px; border-radius: 20px; }
+    footer { background-color: #f9f9f9; padding: 40px 0; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; }
+    .footer-links { margin-bottom: 20px; }
+    .footer-links a { margin: 0 10px; color: #666; text-decoration: none; }
+/* --- 追加：アコーディオンのスタイル --- */
+    details {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none; /* デフォルトの矢印を消す（任意） */
+      outline: none;
+    }
+
+    /* タイトル横に擬似的に「＋」マークなどを付けるとおしゃれです */
+    summary h1 {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    
+    summary::-webkit-details-marker { display: none; } /* Safari用矢印消し */
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn"><span></span><span></span><span></span></label>
+    <div style="font-weight: bold; font-size: 18px;">データサイエンス・AIリテラシー講座 イラスト</div>
+    <div class="nav-content">
+      <ul>
+        <li><a href="ds.html">DS講座</a></li>
+        <li><a href="aids.html">データサイエンス・AIリテラシー講座</a></li>
+        <li><a href="japanese.html">日本語表現力基礎講座</a></li>
+        <li><a href="itbasic.html">情報基礎講座</a></li>
+        <hr style="margin: 10px 0; border-top: 1px solid #eee;">
+        <li><a href="index.html" style="font-size: 13px; color: #888;">トップページへ戻る</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+
+  <details open>
+    <summary><h1>人物を含むシーン</h1></summary>
+    <div class="gallery-grid">
+
+    <a href="#modal01" class="gallery-item"><img src="aiha01.webp" alt="シーン1"></a>
+    <a href="#modal02" class="gallery-item"><img src="ai0201.webp" alt="シーン2"></a>
+    <a href="#modal03" class="gallery-item"><img src="ai06a01.webp" alt="シーン3"></a>
+    <a href="#modal04" class="gallery-item"><img src="ai06a02.webp" alt="シーン4"></a>
+    <a href="#modal05" class="gallery-item"><img src="ai0701.webp" alt="シーン5"></a>
+    <a href="#modal06" class="gallery-item"><img src="ai0702.webp" alt="シーン6"></a>
+    <a href="#modal07" class="gallery-item"><img src="ai1501.webp" alt="シーン7"></a>
+    <a href="#modal08" class="gallery-item"><img src="ai1601.webp" alt="シーン8"></a>
+    <a href="#modal09" class="gallery-item"><img src="ai1701.webp" alt="シーン9"></a>
+    <a href="#modal10" class="gallery-item"><img src="ai1702.webp" alt="シーン10"></a>
+    <a href="#modal11" class="gallery-item"><img src="ai1703.webp" alt="シーン11"></a>
+    <a href="#modal12" class="gallery-item"><img src="ai1704.webp" alt="シーン12"></a>
+    <a href="#modal13" class="gallery-item"><img src="ai1801.webp" alt="シーン13"></a>
+    <a href="#modal14" class="gallery-item"><img src="ai1802.webp" alt="シーン14"></a>
+    <a href="#modal15" class="gallery-item"><img src="ai1803.webp" alt="シーン15"></a>
+    <a href="#modal16" class="gallery-item"><img src="ai1804.webp" alt="シーン16"></a>
+    <a href="#modal17" class="gallery-item"><img src="ai1805.webp" alt="シーン17"></a>
+    <a href="#modal18" class="gallery-item"><img src="aine01.webp" alt="シーン18"></a>
+    </div>
+
+  <div id="modal01" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiLha01.webp" alt="拡大1">
+      <div class="modal-desc">はじめに2で使用</div>
+    </div>
+  </div>
+
+  <div id="modal02" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL0201.webp" alt="拡大2">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用。数学者ロナルド・フィッシャー</div>
+    </div>
+  </div>
+
+  <div id="modal03" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL06a01.webp" alt="拡大3">
+      <div class="modal-desc">6章a「代表値_標本調査_母集団」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal04" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL06a02.webp" alt="拡大4">
+      <div class="modal-desc">6章a「代表値_標本調査_母集団」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal05" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL0701.webp" alt="拡大5">
+      <div class="modal-desc">7章「決定理論」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal06" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL0702.webp" alt="拡大6">
+      <div class="modal-desc">7章「決定理論」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal07" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1501.webp" alt="拡大7">
+      <div class="modal-desc">15章「決定木」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal08" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1601.webp" alt="拡大8">
+      <div class="modal-desc">16章「学習データ・評価データ」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal09" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1701.webp" alt="拡大9">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1702.webp" alt="拡大10">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal11" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1703.webp" alt="拡大11">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal12" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1704.webp" alt="拡大12">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal13" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1801.webp" alt="拡大13">
+      <div class="modal-desc">18章「人工知能2」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal14" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1802.webp" alt="拡大14">
+      <div class="modal-desc">18章「人工知能2」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal15" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1803.webp" alt="拡大15">
+      <div class="modal-desc">18章「人工知能2」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal16" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1804.webp" alt="拡大16">
+      <div class="modal-desc">18章「人工知能2」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal17" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1805.webp" alt="拡大17">
+      <div class="modal-desc">18章「人工知能2」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal18" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiLne01.webp" alt="拡大18">
+      <div class="modal-desc">ネイピア数で使用。ジョン・ネイピア。</div>
+    </div>
+  </div>
+</details>
+
+  <details>
+    <summary><h1>機器・ネットワーク</h1></summary>
+    <div class="gallery-grid">
+    <a href="#modal19" class="gallery-item"><img src="aiKha01.webp" alt="シーン19"></a>
+    <a href="#modal20" class="gallery-item"><img src="aiK1001.webp" alt="シーン20"></a>
+    <a href="#modal21" class="gallery-item"><img src="aiK1401.webp" alt="シーン21"></a>
+    <a href="#modal22" class="gallery-item"><img src="aiK1402.webp" alt="シーン22"></a>
+    <a href="#modal23" class="gallery-item"><img src="aiK1601.webp" alt="シーン23"></a>
+    <a href="#modal24" class="gallery-item"><img src="aiK1602.webp" alt="シーン24"></a>
+    <a href="#modal25" class="gallery-item"><img src="aiK1603.webp" alt="シーン25"></a>
+    <a href="#modal26" class="gallery-item"><img src="aiK1701.webp" alt="シーン26"></a>
+    <a href="#modal27" class="gallery-item"><img src="aiK1702.webp" alt="シーン27"></a>
+    </div>
+
+  <div id="modal19" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKLha01.webp" alt="拡大19">
+      <div class="modal-desc">はじめに1で使用</div>
+    </div>
+  </div>
+
+  <div id="modal20" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1001.webp" alt="拡大20">
+      <div class="modal-desc">10章「関連係数＿散布図_相関係数」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal21" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1401.webp" alt="拡大21">
+      <div class="modal-desc">14章「ロジスティック回帰1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal22" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1402.webp" alt="拡大22">
+      <div class="modal-desc">14章「ロジスティック回帰1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal23" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1601.webp" alt="拡大23">
+      <div class="modal-desc">16章「学習データ・評価データ」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal24" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1602.webp" alt="拡大24">
+      <div class="modal-desc">16章「学習データ・評価データ」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal25" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1603.webp" alt="拡大25">
+      <div class="modal-desc">16章「学習データ・評価データ」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal26" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiKL1701.webp" alt="拡大26">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+
+  <div id="modal27" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiL1701.webp" alt="拡大27">
+      <div class="modal-desc">17章「人工知能1」で使用。</div>
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary><h1>生活・日用・食べ物</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal28" class="gallery-item"><img src="aiSha01.webp" alt="シーン28"></a>
+    <a href="#modal29" class="gallery-item"><img src="aiSha02.webp" alt="シーン29"></a>
+    <a href="#modal30" class="gallery-item"><img src="aiSha03.webp" alt="シーン30"></a>
+    <a href="#modal31" class="gallery-item"><img src="aiS0201.webp" alt="シーン31"></a>
+    <a href="#modal32" class="gallery-item"><img src="aiS0202.webp" alt="シーン32"></a>
+    <a href="#modal33" class="gallery-item"><img src="aiS0203.webp" alt="シーン33"></a>
+    <a href="#modal34" class="gallery-item"><img src="aiS0501.webp" alt="シーン34"></a>
+    <a href="#modal35" class="gallery-item"><img src="aiS5052.webp" alt="シーン35"></a>
+    <a href="#modal36" class="gallery-item"><img src="aiS0503.webp" alt="シーン36"></a>
+    <a href="#modal37" class="gallery-item"><img src="aiS06a01.webp" alt="シーン37"></a>
+    <a href="#modal38" class="gallery-item"><img src="aiS0601.webp" alt="シーン38"></a>
+    <a href="#modal39" class="gallery-item"><img src="aiS0901.webp" alt="シーン39"></a>
+    <a href="#modal40" class="gallery-item"><img src="aiS0902.webp" alt="シーン40"></a>
+    <a href="#modal41" class="gallery-item"><img src="aiS0903.webp" alt="シーン41"></a>
+    <a href="#modal42" class="gallery-item"><img src="aiS1201.webp" alt="シーン42"></a>
+    <a href="#modal43" class="gallery-item"><img src="aiS1301.webp" alt="シーン43"></a>
+    <a href="#modal44" class="gallery-item"><img src="aiS1601.webp" alt="シーン44"></a>
+    <a href="#modal45" class="gallery-item"><img src="aiS1701.webp" alt="シーン45"></a>
+    <a href="#modal46" class="gallery-item"><img src="aiS1702.webp" alt="シーン46"></a>
+    <a href="#modal47" class="gallery-item"><img src="aiSds01.webp" alt="シーン47"></a>
+    <a href="#modal48" class="gallery-item"><img src="aiSds02.webp" alt="シーン48"></a>
+    <a href="#modal49" class="gallery-item"><img src="aiSds03.webp" alt="シーン49"></a>
+    <a href="#modal50" class="gallery-item"><img src="aiSds04.webp" alt="シーン50"></a>
+    <a href="#modal87" class="gallery-item"><img src="aiSi201.webp" alt="シーン87"></a>
+    <a href="#modal90" class="gallery-item"><img src="aiSlo01.webp" alt="シーン90"></a>
+    <a href="#modal91" class="gallery-item"><img src="aiSlo02.webp" alt="シーン91"></a>
+    </div>
+
+  <div id="modal28" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLha01.webp" alt="拡大28">
+      <div class="modal-desc">はじめに1で使用</div>
+    </div>
+  </div>
+
+  <div id="modal29" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLha02.webp" alt="拡大29">
+      <div class="modal-desc">はじめに2で使用</div>
+    </div>
+  </div>
+
+  <div id="modal30" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLha03.webp" alt="拡大30">
+      <div class="modal-desc">はじめに2で使用</div>
+    </div>
+  </div>
+
+  <div id="modal31" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0201.webp" alt="拡大31">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal32" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0202.webp" alt="拡大32">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal33" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0203.webp" alt="拡大33">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal34" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0501.webp" alt="拡大34">
+      <div class="modal-desc">5章「分布_中心極限定理＿母平均の推定」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal35" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL5052.webp" alt="拡大35">
+      <div class="modal-desc">5章「分布_中心極限定理＿母平均の推定」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal36" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0503.webp" alt="拡大36">
+      <div class="modal-desc">5章「分布_中心極限定理＿母平均の推定」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal37" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL06a01.webp" alt="拡大37">
+      <div class="modal-desc">6章a「確率」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal38" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0601.webp" alt="拡大38">
+      <div class="modal-desc">6章「期待値」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal39" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0901.webp" alt="拡大39">
+      <div class="modal-desc">9章「尺度＿クロス集計表＿相関比」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal40" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0902.webp" alt="拡大40">
+      <div class="modal-desc">9章「尺度＿クロス集計表＿相関比」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal41" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL0903.webp" alt="拡大41">
+      <div class="modal-desc">9章「尺度＿クロス集計表＿相関比」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal42" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL1201.webp" alt="拡大42">
+      <div class="modal-desc">12章「検定」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal43" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL1301.webp" alt="拡大43">
+      <div class="modal-desc">13章「ロジスティック回帰1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal44" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL1601.webp" alt="拡大44">
+      <div class="modal-desc">16章「学習データ・評価データ」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal45" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL1701.webp" alt="拡大45">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal46" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSL1702.webp" alt="拡大46">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal47" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLds01.webp" alt="拡大47">
+      <div class="modal-desc">「データサイエンスとは」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal48" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLds02.webp" alt="拡大48">
+      <div class="modal-desc">「データサイエンスとは」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal49" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLds03.webp" alt="拡大49">
+      <div class="modal-desc">「データサイエンスとは」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal50" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLds04.webp" alt="拡大50">
+      <div class="modal-desc">「トランプ4種」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal87" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLi201.webp" alt="拡大87">
+      <div class="modal-desc">2章で使用</div>
+    </div>
+  </div>
+
+  <div id="modal90" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLlo01.webp" alt="拡大90">
+      <div class="modal-desc">「ロジスティック回帰」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal91" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiSLlo02.webp" alt="拡大91">
+      <div class="modal-desc">「ロジスティック回帰」で使用</div>
+    </div>
+  </div>
+</details>
+
+<details>
+<summary><h1>グラフ・表・アイコン</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal51" class="gallery-item"><img src="aiGha01.webp" alt="シーン51"></a>
+    <a href="#modal52" class="gallery-item"><img src="aiGha02.webp" alt="シーン52"></a>
+    <a href="#modal53" class="gallery-item"><img src="aiGha03.webp" alt="シーン53"></a>
+    <a href="#modal54" class="gallery-item"><img src="aiG0201.webp" alt="シーン54"></a>
+    <a href="#modal55" class="gallery-item"><img src="aiG0202.webp" alt="シーン55"></a>
+    <a href="#modal56" class="gallery-item"><img src="aiG06a01.webp" alt="シーン56"></a>
+    <a href="#modal57" class="gallery-item"><img src="aiG06a02.webp" alt="シーン57"></a>
+    <a href="#modal58" class="gallery-item"><img src="aiG1001.webp" alt="シーン58"></a>
+    <a href="#modal59" class="gallery-item"><img src="aiG1002.webp" alt="シーン59"></a>
+    <a href="#modal60" class="gallery-item"><img src="aiG1701.webp" alt="シーン60"></a>
+    <a href="#modal61" class="gallery-item"><img src="aiG1702.webp" alt="シーン61"></a>
+    <a href="#modal62" class="gallery-item"><img src="aiG1703.webp" alt="シーン62"></a>
+    <a href="#modal63" class="gallery-item"><img src="aiG1801.webp" alt="シーン63"></a>
+    <a href="#modal64" class="gallery-item"><img src="aiG1802.webp" alt="シーン64"></a>
+    <a href="#modal65" class="gallery-item"><img src="aiGds01.webp" alt="シーン65"></a>
+    <a href="#modal66" class="gallery-item"><img src="aiGir01.webp" alt="シーン66"></a>
+    <a href="#modal67" class="gallery-item"><img src="aiGco01.webp" alt="シーン67"></a>
+    <a href="#modal68" class="gallery-item"><img src="aiGji01.webp" alt="シーン68"></a>
+    <a href="#modal69" class="gallery-item"><img src="aiGji02.webp" alt="シーン69"></a>
+    <a href="#modal85" class="gallery-item"><img src="aiGke01.webp" alt="シーン85"></a>
+    <a href="#modal86" class="gallery-item"><img src="aiGmo02.webp" alt="シーン86"></a>
+    <a href="#modal88" class="gallery-item"><img src="aiG1501.webp" alt="シーン88"></a>
+    <a href="#modal93" class="gallery-item"><img src="aiG1704.webp" alt="シーン93"></a>
+    </div>
+
+  <div id="modal51" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLha01.webp" alt="拡大51">
+      <div class="modal-desc">はじめに1で使用</div>
+    </div>
+  </div>
+
+  <div id="modal52" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLha02.webp" alt="拡大52">
+      <div class="modal-desc">はじめに1で使用</div>
+    </div>
+  </div>
+
+  <div id="modal53" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLha03.webp" alt="拡大53">
+      <div class="modal-desc">はじめに2で使用</div>
+    </div>
+  </div>
+
+  <div id="modal54" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL0201.webp" alt="拡大54">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal55" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL0202.webp" alt="拡大55">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal56" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL06a01.webp" alt="拡大56">
+      <div class="modal-desc">6章a「確率」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal57" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL06a02.webp" alt="拡大57">
+      <div class="modal-desc">6章a「確率」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal58" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1001.webp" alt="拡大58">
+      <div class="modal-desc">10章「関連係数＿散布図_相関係数」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal59" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1002.webp" alt="拡大59">
+      <div class="modal-desc">10章「関連係数＿散布図_相関係数」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal60" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1701.webp" alt="拡大60">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal61" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1702.webp" alt="拡大61">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal62" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1703.webp" alt="拡大62">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal63" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1801.webp" alt="拡大63">
+      <div class="modal-desc">18章「人工知能2」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal64" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1802.webp" alt="拡大64">
+      <div class="modal-desc">18章「人工知能2」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal65" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLds01.webp" alt="拡大65">
+      <div class="modal-desc">「データサイエンスとは」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal66" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLir01.webp" alt="拡大66">
+      <div class="modal-desc">「アイリスデータ」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal67" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLco01.webp" alt="拡大67">
+      <div class="modal-desc">「コーヒーブレイク」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal68" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLji01.webp" alt="拡大68">
+      <div class="modal-desc">「人口知能（農業への応用）」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal69" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLji02.webp" alt="拡大69">
+      <div class="modal-desc">「人口知能（農業への応用）」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal85" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLke01.webp" alt="拡大85">
+      <div class="modal-desc">「結婚問題」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal86" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGLmo02.webp" alt="拡大86">
+      <div class="modal-desc">「モンティ・ホール問題」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal88" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1501.webp" alt="拡大88">
+      <div class="modal-desc">15章「決定木」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal93" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiGL1704.webp" alt="拡大93">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary><h1>建物・風景</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal70" class="gallery-item"><img src="aiT0201.webp" alt="シーン70"></a>
+    <a href="#modal71" class="gallery-item"><img src="aiT0202.webp" alt="シーン71"></a>
+    <a href="#modal72" class="gallery-item"><img src="aiT0203.webp" alt="シーン72"></a>
+    <a href="#modal73" class="gallery-item"><img src="aiT1201.webp" alt="シーン73"></a>
+    <a href="#modal74" class="gallery-item"><img src="aiT1301.webp" alt="シーン74"></a>
+    <a href="#modal75" class="gallery-item"><img src="aiT1401.webp" alt="シーン75"></a>
+    <a href="#modal76" class="gallery-item"><img src="aiT1501.webp" alt="シーン76"></a>
+    <a href="#modal77" class="gallery-item"><img src="aiT1801.webp" alt="シーン77"></a>
+    <a href="#modal78" class="gallery-item"><img src="aiTta01.webp" alt="シーン78"></a>
+    <a href="#modal79" class="gallery-item"><img src="aiTji01.webp" alt="シーン79"></a>
+    <a href="#modal80" class="gallery-item"><img src="aiTji02.webp" alt="シーン80"></a>
+    <a href="#modal89" class="gallery-item"><img src="aiT1701.webp" alt="シーン89"></a>
+    </div>
+
+  <div id="modal70" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL0201.webp" alt="拡大70">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal71" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL0202.webp" alt="拡大71">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal72" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL0203.webp" alt="拡大72">
+      <div class="modal-desc">2章「代表値_標本調査_母集団」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal73" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1201.webp" alt="拡大73">
+      <div class="modal-desc">12章「検定」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal74" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1301.webp" alt="拡大74">
+      <div class="modal-desc">13章「ロジスティック回帰1」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal75" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1401.webp" alt="拡大75">
+      <div class="modal-desc">14章「ロジスティック回帰2」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal76" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1501.webp" alt="拡大76">
+      <div class="modal-desc">15章「決定木」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal77" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1801.webp" alt="拡大77">
+      <div class="modal-desc">18章「人工知能2」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal78" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTLta01.webp" alt="拡大78">
+      <div class="modal-desc">「タイタニック号」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal79" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTLji01.webp" alt="拡大79">
+      <div class="modal-desc">「人口知能（農業への応用）」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal80" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTLji02.webp" alt="拡大80">
+      <div class="modal-desc">「人口知能（農業への応用）」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal89" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiTL1701.webp" alt="拡大89">
+      <div class="modal-desc">17章「人工知能1」で使用</div>
+    </div>
+  </div>
+</details>
+
+<details>
+ <summary><h1>その他</h1></summary>
+
+  <div class="gallery-grid">
+    <a href="#modal81" class="gallery-item"><img src="aiO1101.webp" alt="シーン81"></a>
+    <a href="#modal82" class="gallery-item"><img src="aiOmo01.webp" alt="シーン82"></a>
+    <a href="#modal83" class="gallery-item"><img src="aiOichi01.webp" alt="シーン83"></a>
+    <a href="#modal84" class="gallery-item"><img src="aiOgi01.webp" alt="シーン84"></a>
+    <a href="#modal92" class="gallery-item"><img src="aiOke01.webp" alt="シーン92"></a>
+    </div>
+
+  <div id="modal81" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiOT1101.webp" alt="拡大81">
+      <div class="modal-desc">11章「回帰分析」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal82" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiOLmo01.webp" alt="拡大82">
+      <div class="modal-desc">「モンティ・ホール問題」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal83" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiOLichi01.webp" alt="拡大83">
+      <div class="modal-desc">「一様分布」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal84" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiOLgi01.webp" alt="拡大84">
+      <div class="modal-desc">「擬似乱数」で使用</div>
+    </div>
+  </div>
+
+  <div id="modal92" class="modal">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-content">
+      <a href="#!" class="close-btn">×</a>
+      <img src="aiOLke01.webp" alt="拡大92">
+      <div class="modal-desc">「結婚問題」で使用</div>
+    </div>
+  </div>
+</details>
+
+
+  <div class="back-to-top">
+    <a href="#">↑ ページの一番上に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="company.html">運営会社</a>
+  </div>
+  <p>© 2026 AI/DS Lecture Project All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
